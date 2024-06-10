@@ -76,6 +76,16 @@ button,
 
 /*--------------------------------------------------------------------------*/
 
+.theme .theme-light,
+.theme.dark .theme-dark {
+    display: block !important;
+}
+
+.theme .theme-dark,
+.theme.dark .theme-light {
+    display: none !important;
+}
+
 .font-size-15 figure {
     font-size: 10px;
 }

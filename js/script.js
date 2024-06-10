@@ -1,18 +1,42 @@
 // console.log("length => ", data.length);
+const theme = document.body.querySelector(".theme");
 const themeLight = document.body.querySelector(".theme-light");
 const themeDark = document.body.querySelector(".theme-dark");
 
+
+console.log("loader => ", localStorage.getItem("theme"))
+
+if (localStorage.getItem("theme") == "dark") {
+    themeFun("dark");
+} else {
+    themeFun("light");
+}
+
+
+
 themeLight.addEventListener("click", () => {
-    document.body.setAttribute("data-bs-theme", "dark");
-    themeLight.classList.toggle("d-none");
-    themeDark.classList.toggle("d-none");
+    themeFun("dark");
+    createCookies("dark");
 })
 themeDark.addEventListener("click", () => {
-    document.body.setAttribute("data-bs-theme", "light");
-    themeLight.classList.toggle("d-none");
-    themeDark.classList.toggle("d-none");
+    themeFun("light");
+    createCookies("light");
 })
 
+function themeFun(themeData) {
+    if (themeData == "dark") {
+        document.body.setAttribute("data-bs-theme", "dark");
+        theme.classList.add("dark");
+    } else {
+        document.body.setAttribute("data-bs-theme", "light");
+        theme.classList.remove("dark");
+    }
+}
+
+function createCookies(data) {
+    localStorage.setItem("theme", data);
+    console.log("update => ", localStorage.getItem("theme"))
+}
 
 let dom = "";
 for (let i = 0; i < 20; i++) {
